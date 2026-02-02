@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+    color: #fff;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+}
+
+header h1 {
+    font-size: 26px;
+    font-weight: 700;
+}
+
+nav a {
+    color: #fff;
+    margin-left: 25px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #00e5ff;
+}
+
+/* HERO */
+.hero {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    opacity: 0.9;
+}
+
+.hero button {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 30px;
+    background: #00e5ff;
+    color: #000;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.hero button:hover {
+    background: #00bcd4;
+}
+
+/* LOGO */
+.logo-section {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.logo-section .main-logo {
+    width: 300px;     
+    max-width: 90%;   
+    height: auto;
+    display: inline-block;
+}
+
+/* LESSONS */
+.lessons {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    display: none;
+}
+
+.lessons.show {
+    display: block;
+}
+
+.lessons h3 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 25px;
+}
+
+.lesson-card {
+    background: rgba(255,255,255,0.08);
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* INFO SECTION */
+.info {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 30px;
+    display: none;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 15px;
+}
+
+.info.show {
+    display: block;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+    }
+
+    nav {
+        margin-top: 10px;
+    }
+
+    .hero h2 {
+        font-size: 34px;
+    }
+}

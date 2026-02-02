@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Alimjon | Shaxsiy sayt</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: #0f172a;
+      color: white;
+    }
+
+    header {
+      background: #020617;
+      padding: 20px;
+      text-align: center;
+    }
+
+    section {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .card {
+      background: #020617;
+      padding: 15px;
+      border-radius: 15px;
+      margin-bottom: 15px;
+    }
+
+    button {
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .play {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      font-size: 26px;
+      background: #22c55e;
+    }
+
+    .player {
+      display: none;
+      margin-top: 10px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 160px;
+      border-radius: 10px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Alimjon</h1>
+  <p>Shaxsiy sayt + musiqa</p>
+</header>
+
+<section>
+  <h2>Admin</h2>
+  <input id="pass" type="password" placeholder="Parol">
+  <button onclick="login()">Kirish</button>
+
+  <div id="adminPanel" style="display:none;">
+    <input id="songName" placeholder="Qo‘shiq nomi">
+    <input id="videoId" placeholder="YouTube video ID">
+    <button onclick="addSong()">Qo‘shiq qo‘shish</button>
+  </div>
+</section>
+
+<section>
+  <h2>Musiqalar</h2>
+  <div id="musicList"></div>
+</section>
+
+<script>
+var PASSWORD = "2027";
+
+function login() {
+  var p = document.getElementById("pass").value;
+  if (p === PASSWORD) {
+    document.getElementById("adminPanel").style.display = "block";
+    alert("Admin rejim yoqildi");
+  } else {
+    alert("Parol xato");
+  }
+}
+function addSong() {
+  var name = document.getElementById("songName").value;
+  var id = document.getElementById("videoId").value;
+
+  if (name === "" || id === "") {
+    alert("Hammasini to‘ldir");
+    return;
+  }
+
+  var div = document.createElement("div");
+  div.className = "card";
+
+  div.innerHTML =
+    "<h3>" + name + "</h3>" +
+
+    "<button class='play' onclick=\"playMusic('" + id + "')\">▶</button> " +
+
+    "<button onclick='removeSong(this)' " +
+    "style='margin-left:10px;background:#ef4444;color:white;'>O‘chirish</button>" +
+
+    "<div class='player' id='" + id + "'>" +
+    "<iframe src='https://www.youtube.com/embed/" + id + "?autoplay=1' allow='autoplay'></iframe>" +
+    "</div>";
+
+  document.getElementById("musicList").appendChild(div);
+
+  document.getElementById("songName").value = "";
+  document.getElementById("videoId").value = "";
+}
+
+function playMusic(id) {
+  var players = document.querySelectorAll(".player");
+  for (var i = 0; i < players.length; i++) {
+    players[i].style.display = "none";
+  }
+  document.getElementById(id).style.display = "block";
+}
+function removeSong(btn) {
+  if (confirm("Rostdan ham o‘chirmoqchimisiz?")) {
+    btn.parentElement.remove();
+  }
+}
+
+</script>
+
+</body>
+</html>
